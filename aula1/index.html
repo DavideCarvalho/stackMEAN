@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="firstapp">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ texto }}</title>
+  </head>
+  <body style="background:{{texto}}" ng-controller="MyFirstController as first">
+    <h1>{{ first.astolfo }}</h1>
+    <h1>{{ first.texto }}</h1>
+    <input type="text" ng-model="first.texto">
+    <script src="angular.min.js"></script>
+    <script>
+angular.module('firstapp',[])
+  .controller('MyFirstController', MyFirstController);
+
+function MyFirstController(){
+  var vm = this;
+
+  vm.texto = "oie"
+  vm.astolfo = "Ta funcionando";
+};
+    </script>
+  </body>
+</html>
