@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="seila">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 2</title>
+</head>
+<body ng-controller="Controller1 as c1">
+  <h1>{{c1.mensagem}}</h1>
+  
+  <input type="text" ng-model="procurarUsuario">
+  <p>{{procurarUsuario | uppercase}}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Curso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in c1.users | filter:{nome:procurarUsuario}">
+        <td>{{user.nome}}</td>
+        <td>{{user.curso}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div ng-controller="Controller2 as c2">
+    <h2>{{c2.mensagem}}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome da Bolsa</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="bolsa in c2.bolsas">
+          <td>{{bolsa.nome}}</td>
+          <td>BRL{{bolsa.valor | currency}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="angular.min.js"></script>
+  <script>
+    angular.module('seila',[])
+    .controller('Controller1',Controller1)
+    .controller('Controller2',Controller2);
+
+    function Controller1(){
+      vm = this;
+      vm.mensagem = "Controller 1 funcionando";
+      vm.users=[
+        {nome:'Raquel',curso:'GE'},
+        {nome:'Carla',curso:'Arquitetura'},
+        {nome:'Taipina',curso:'Tricô'}
+      ];
+    }
+
+    function Controller2(){
+      vm = this;
+      vm.mensagem = "Controller 2 funcionando";
+      
+      vm.bolsas=[
+        {nome:'Bolsa do Café',valor:1500},
+        {nome:'Bolsa do Itapema',valor:15000},
+        {nome:'Bolsa do Taipina',valor:2750.73}
+      ];
+    }
+  </script>
+</body>
+</html>

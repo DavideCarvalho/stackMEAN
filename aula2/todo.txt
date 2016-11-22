@@ -1,0 +1,5 @@
+- Show dual controllers
+- Nesting Controllers
+- ng-repeat
+- filters
+

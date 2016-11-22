@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="primeiroprojeto">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <title>Projeto</title>
+    <style>
+      .container{
+        max-width: 600px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body ng-controller="UsuariosController as usuarios">
+  <div class="container">
+    <h1 class="center-align">{{usuarios.titulo}}</h1>
+    
+    <label for="nome">Procurar Pessoa</label>
+    <input type="text" id="nome" ng-model="procurarPessoa">
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Curso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in usuarios.users | orderBy:'nome' | filter:{nome:procurarPessoa}">
+          <td>{{user.nome}}</td>
+          <td>{{user.curso}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+  <script src="angular.min.js"></script>
+  <script src="modulo.js"></script>
+  <script src="controllers/usuarios-controller.js"></script>
+  </body>
+</html>
